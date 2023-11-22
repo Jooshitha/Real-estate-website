@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Property transaction tracking</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <style type="text/css">
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <img src="logo.jpeg" class="logo">
+            <ul>
+                <li><a href="">About</a></li>
+                <li><a href="">Projects</a></li>
+            </ul>
+            <div class="nav-search">
+                <select class="search_select">
+                     <option value="Buy">All</option>
+                </select>
+                <input class="search_input" placeholder="Enter Locality/ Project/ Society/ Landmark">
+                <div class="search_icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+        </nav>
+
+        <div class="text-box">
+            <p>THIS IS</p>
+            <h1>REI</h1>
+            <h3>UNLOCK THE POWER OF REAL TIME PROPERTY DATA</h3>
+            <div class="row">
+                <a href="">Explore the cities here....</a>
+                <span>You can land to your dream destination</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="insights">
+        <i class="fa-solid fa-lightbulb fa-3x"></i>
+        <h1>Insights</h1>
+        <div class="bound">
+            <div class="price">
+                <a href="">
+                    <i class="fa-solid fa-hand-holding-dollar fa-2x price-icon"></i>
+                    <h2>Price Trends</h2>
+                    <h5>Review property values and costs.</h5>
+                </a>
+            </div>
+
+            <div class="price">
+                <a href="">
+                    <i class="fa-solid fa-map-location-dot fa-2x price-icon"></i>
+                    <h2>Locality Insights</h2>
+                    <h5>Know more about different localities</h5>
+                </a>
+            </div>
+
+            <div class="price">
+                <a href="">
+                    <i class="fa-solid fa-comments fa-2x price-icon"></i>
+                    <h2>Reviews </h2>
+                    <h5>Know what residents saying</h5>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <h2>Property  Transaction Tracking</h2>
+    <div id="map"> </div>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <script>
+        var cities = [
+        {name: "Jaipur", lat: 26.9124, lng: 75.7873, transaction: "20 lakh"},
+        {name: "Mumbai", lat: 19.0760, lng: 72.8777, transaction: "50 lakh"},
+        {name: "Chennai", lat: 13.0827, lng: 80.2707, transaction: "70 lakh"},
+        {name: "Delhi", lat: 28.7041, lng: 77.1025, transaction: "12 lakh"},
+        {name: "Goa", lat: 15.2993, lng: 74.1240, transaction: "3 lakh"},
+        {name: "Bengal", lat: 22.9786, lng: 87.7478, transaction: "95 lakh"},
+        {name: "Bengaluru", lat: 12.9716, lng: 77.5946, transaction: "66 lakh"}
+        ];
+        var map = L.map('map').setView([20.5937, 78.9629], 5);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+
+        for (var i = 0; i < cities.length; i++) {
+            var marker = L.marker([cities[i].lat, cities[i].lng]).addTo(map);
+            marker.bindTooltip(cities[i].name + "<br>Transaction: " + cities[i].transaction, {permanent: true, direction: "right"}).openTooltip();
+        }
+
+    </script>
+    <div class="transaction">
+        <section class="step-wizard">
+            <ul class="step-wizard-list">
+                <li class="step-wizard-item">
+                    <span class="progress-count">1</span>
+                    <span class="progress-label">Share your property details</span>
+                </li>
+    
+                <li class="step-wizard-item current-item">
+                    <span class="progress-count">2</span>
+                    <span class="progress-label">Receive your REI offer</span>
+                </li>
+    
+                <li class="step-wizard-item">
+                    <span class="progress-count">3</span>
+                    <span class="progress-label">Complete sale transaction</span>
+                </li>
+            </ul>
+            <div class="submit">
+                <a href="Untitled-1.html"><input type="submit" value="Get Your REI Offer"></a>
+            </div>
+        </section>
+    </div>
+    
+    
+    <footer>
+        <div class="footer-info">
+            <div class="footer-width about">
+                <h2>About</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae perferendis necessitatibus quidem sed facilis est, quaerat ad voluptatum animi id voluptatem sint architecto quibusdam odit exercitationem, harum magni beatae cum!</p>
+                <div class="social-media">
+                    <ul>
+                        <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-square-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-width link">
+                <h2>Quick Link</h2>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Service</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-width contact">
+                <h2>Contact</h2>
+                <ul>
+                    <span><i class="fa-solid fa-location-dot"></i></span>
+                    <p>510 Real Estate Insights Bengaluru, Karnataka, India</p>
+                </ul>
+                <li>
+                    <span><i class="fa-regular fa-envelope"></i></span>
+                    <a href="#">hiuhhgfdc@gmail.com</a>
+                </li>
+                <li>
+                    <span><i class="fa-solid fa-phone-volume"></i></span>
+                    <a href="#">000 0000 000</a>
+                </li>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
